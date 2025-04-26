@@ -29,8 +29,8 @@ steps:
     run: |
       aws s3 sync unzipped/ s3://apilambada/ --delete --region us-east-1
     env:
-      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_ACCESS_KEY_ID: $AKIAXWAJSPI2SNMO25UM
+      AWS_SECRET_ACCESS_KEY: $lhoLsmXg37mgvgv/LwiTWDJAcSA0uGbXJ5C3Brm6
       AWS_DEFAULT_REGION: us-east-1
 
   - name: Cleanup
