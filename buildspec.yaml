@@ -1,0 +1,37 @@
+version: 1.0
+
+name: build-unzip-deploy-to-s3
+
+on:
+  push:
+    branches:
+      - main
+
+steps:
+  - name: Install dependencies
+    run: npm install
+
+  - name: Build project
+    run: npm run build
+
+  - name: Zip build folder
+    run: |
+      cd build
+      zip -r ../build.zip .
+      cd ..
+
+  - name: Unzip build.zip
+    run: |
+      mkdir unzipped
+      unzip build.zip -d unzipped
+
+  - name: Upload unzipped files to S3
+    run: |
+      aws s3 sync unzipped/ s3://apilambada/ --delete --region us-east-1
+    env:
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_DEFAULT_REGION: us-east-1
+
+  - name: Cleanup
+    run: rm -rf build.zip unzipped
