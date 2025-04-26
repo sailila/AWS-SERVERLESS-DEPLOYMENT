@@ -31,7 +31,7 @@ steps:
     env:
       AWS_ACCESS_KEY_ID: $AKIAXWAJSPI2SNMO25UM
       AWS_SECRET_ACCESS_KEY: $lhoLsmXg37mgvgv/LwiTWDJAcSA0uGbXJ5C3Brm6
-      AWS_DEFAULT_REGION: us-east-1
+      AWS_DEFAULT_REGION: us-east-2
 
   - name: Cleanup
     run: rm -rf build.zip unzipped
